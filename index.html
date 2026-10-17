@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="reviews.css" />
 </head>
 <body>
 
@@ -178,6 +179,45 @@
     </div>
   </section>
 
+  <!-- GUEST REVIEWS -->
+  <section class="reviews-section" id="reviews">
+    <div class="section-header">
+      <p class="section-tag">Guest Testimonials</p>
+      <h2 class="section-title">What Our Guests Say</h2>
+      <p class="section-subtitle">Real experiences from our valued guests around the world.</p>
+    </div>
+    <div class="reviews-grid" id="reviewsGrid"></div>
+    <form class="write-review-form glass" id="reviewForm">
+      <h3>Leave a Review</h3>
+      <div class="star-rating" id="starRating">
+        <button type="button" class="star-btn" id="star1" onclick="setStarRating(1)">★</button>
+        <button type="button" class="star-btn" id="star2" onclick="setStarRating(2)">★</button>
+        <button type="button" class="star-btn" id="star3" onclick="setStarRating(3)">★</button>
+        <button type="button" class="star-btn" id="star4" onclick="setStarRating(4)">★</button>
+        <button type="button" class="star-btn" id="star5" onclick="setStarRating(5)">★</button>
+      </div>
+      <div class="form-group">
+        <label for="reviewerName">Your Name</label>
+        <input type="text" id="reviewerName" placeholder="e.g. John Smith" required />
+      </div>
+      <div class="form-group">
+        <label for="reviewRoom">Room Stayed In</label>
+        <select id="reviewRoom" required>
+          <option value="">-- Select Room --</option>
+          <option value="Deluxe Room">Deluxe Room</option>
+          <option value="Executive Suite">Executive Suite</option>
+          <option value="Penthouse">Penthouse</option>
+          <option value="Private Villa">Private Villa</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="reviewText">Your Review</label>
+        <textarea id="reviewText" rows="4" placeholder="Share your experience..." required></textarea>
+      </div>
+      <button type="submit" class="btn-primary btn-full">Submit Review</button>
+    </form>
+  </section>
+
   <!-- ABOUT / FEATURES -->
   <section class="about-section" id="about">
     <div class="section-header">
@@ -247,5 +287,6 @@
   </div>
 
   <script src="app.js"></script>
+  <script src="reviews.js"></script>
 </body>
 </html>
