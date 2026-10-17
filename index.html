@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LuxeStay – Premium Hotel Booking</title>
+  <meta name="description" content="Book your dream hotel stay with LuxeStay. Discover luxury accommodations worldwide." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <span class="logo-icon">🏨</span>
+        <span class="logo-text">LuxeStay</span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#rooms">Rooms</a></li>
+        <li><a href="#booking">Book Now</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+      <button class="nav-cta" onclick="scrollToBooking()">Reserve Room</button>
+      <button class="hamburger" id="hamburger" onclick="toggleNav()">☰</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-badge">✦ 5-Star Luxury Experience</p>
+      <h1 class="hero-title">Your Perfect Stay<br/><span class="gradient-text">Awaits You</span></h1>
+      <p class="hero-subtitle">Discover handpicked luxury hotels across the globe. Unforgettable experiences, exceptional comfort.</p>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">500+</span><span class="stat-label">Hotels</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">50K+</span><span class="stat-label">Happy Guests</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">4.9★</span><span class="stat-label">Rating</span></div>
+      </div>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="scrollToBooking()">Book Now</button>
+        <button class="btn-outline" onclick="scrollToRooms()">Explore Rooms</button>
+      </div>
+    </div>
+    <div class="hero-scroll-indicator">
+      <span>Scroll Down</span>
+      <div class="scroll-arrow">↓</div>
+    </div>
+  </section>
+
+  <!-- SEARCH / QUICK BOOK BAR -->
+  <section class="search-bar-section">
+    <div class="search-bar-card glass">
+      <div class="search-field">
+        <label>📍 Destination</label>
+        <input type="text" id="destination" placeholder="Where to?" />
+      </div>
+      <div class="search-divider"></div>
+      <div class="search-field">
+        <label>📅 Check-In</label>
+        <input type="date" id="quickCheckIn" />
+      </div>
+      <div class="search-divider"></div>
+      <div class="search-field">
+        <label>📅 Check-Out</label>
+        <input type="date" id="quickCheckOut" />
+      </div>
+      <div class="search-divider"></div>
+      <div class="search-field">
+        <label>👥 Guests</label>
+        <select id="quickGuests">
+          <option>1 Guest</option>
+          <option>2 Guests</option>
+          <option>3 Guests</option>
+          <option>4+ Guests</option>
+        </select>
+      </div>
+      <button class="btn-search" onclick="quickSearch()">Search</button>
+    </div>
+  </section>
+
+  <!-- ROOMS SECTION -->
+  <section class="rooms-section" id="rooms">
+    <div class="section-header">
+      <p class="section-tag">Our Collection</p>
+      <h2 class="section-title">Exquisite Rooms & Suites</h2>
+      <p class="section-subtitle">Every room is a sanctuary of comfort, designed with meticulous attention to detail.</p>
+    </div>
+    <div class="rooms-grid" id="roomsGrid">
+      <!-- Cards injected by JS -->
+    </div>
+  </section>
+
+  <!-- BOOKING FORM -->
+  <section class="booking-section" id="booking">
+    <div class="booking-wrapper">
+      <div class="booking-left">
+        <p class="section-tag">Easy Reservation</p>
+        <h2 class="section-title">Book Your Room</h2>
+        <p class="section-subtitle">Fill in the details below and we'll confirm your reservation instantly.</p>
+        <div class="amenities-list">
+          <div class="amenity-item">✅ Free Cancellation up to 48hrs</div>
+          <div class="amenity-item">✅ Best Price Guarantee</div>
+          <div class="amenity-item">✅ Instant Confirmation</div>
+          <div class="amenity-item">✅ 24/7 Concierge Support</div>
+        </div>
+      </div>
+      <div class="booking-right">
+        <form class="booking-form glass" id="bookingForm" onsubmit="handleBooking(event)">
+          <h3 class="form-title">Reservation Details</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input type="text" id="firstName" placeholder="John" required />
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input type="text" id="lastName" placeholder="Doe" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="john@example.com" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" placeholder="+1 (555) 000-0000" required />
+          </div>
+          <div class="form-group">
+            <label for="roomType">Room Type</label>
+            <select id="roomType" required>
+              <option value="">-- Select Room --</option>
+              <option value="deluxe">Deluxe Room – $180/night</option>
+              <option value="suite">Executive Suite – $320/night</option>
+              <option value="penthouse">Penthouse – $650/night</option>
+              <option value="villa">Private Villa – $1200/night</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="checkIn">Check-In Date</label>
+              <input type="date" id="checkIn" required />
+            </div>
+            <div class="form-group">
+              <label for="checkOut">Check-Out Date</label>
+              <input type="date" id="checkOut" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="guests">Number of Guests</label>
+            <select id="guests">
+              <option value="1">1 Guest</option>
+              <option value="2">2 Guests</option>
+              <option value="3">3 Guests</option>
+              <option value="4">4 Guests</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="requests">Special Requests</label>
+            <textarea id="requests" rows="3" placeholder="E.g. late checkout, sea view, dietary requirements..."></textarea>
+          </div>
+          <div class="price-summary" id="priceSummary" style="display:none;">
+            <div class="price-row"><span>Room Rate</span><span id="roomRate">-</span></div>
+            <div class="price-row"><span>Nights</span><span id="nightCount">-</span></div>
+            <div class="price-row"><span>Taxes (10%)</span><span id="taxAmount">-</span></div>
+            <div class="price-row total"><span>Total</span><span id="totalAmount">-</span></div>
+          </div>
+          <button type="submit" class="btn-primary btn-full">Confirm Reservation</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT / FEATURES -->
+  <section class="about-section" id="about">
+    <div class="section-header">
+      <p class="section-tag">Why LuxeStay</p>
+      <h2 class="section-title">Unmatched Hospitality</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card glass">
+        <div class="feature-icon">🌟</div>
+        <h3>5-Star Service</h3>
+        <p>Our dedicated staff ensures every moment of your stay exceeds expectations.</p>
+      </div>
+      <div class="feature-card glass">
+        <div class="feature-icon">🍽️</div>
+        <h3>Fine Dining</h3>
+        <p>World-class restaurants helmed by Michelin-starred chefs at every property.</p>
+      </div>
+      <div class="feature-card glass">
+        <div class="feature-icon">💆</div>
+        <h3>Wellness & Spa</h3>
+        <p>Rejuvenate at our award-winning spas with holistic treatments and therapies.</p>
+      </div>
+      <div class="feature-card glass">
+        <div class="feature-icon">🔐</div>
+        <h3>Secure Booking</h3>
+        <p>Your privacy and payment security are our highest priority, always.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <span class="logo-icon">🏨</span>
+        <span class="logo-text">LuxeStay</span>
+        <p>Luxury reimagined for the modern traveler.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#rooms">Rooms</a></li>
+          <li><a href="#booking">Booking</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p>📧 hello@luxestay.com</p>
+        <p>📞 +1 (800) LUXE-STAY</p>
+        <p>📍 Beverly Hills, CA 90210</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 LuxeStay. All rights reserved. | Built with ❤️ for luxury travelers.</p>
+    </div>
+  </footer>
+
+  <!-- SUCCESS MODAL -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+    <div class="modal" onclick="event.stopPropagation()">
+      <div class="modal-icon">🎉</div>
+      <h2>Booking Confirmed!</h2>
+      <p id="modalMessage">Your reservation has been successfully placed. A confirmation email will be sent shortly.</p>
+      <button class="btn-primary" onclick="closeModal()">Done</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
