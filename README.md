@@ -18,7 +18,7 @@ A premium hotel booking web application built with HTML, CSS, and JavaScript.
 - **Footer** – Contact and links
 
 ## Tech Stack
-- HTML5
+- HTML8
 - Vanilla CSS3 (Glassmorphism, Animations)
 - Vanilla JavaScript (ES6+)
 - Google Fonts (Outfit, Playfair Display)
